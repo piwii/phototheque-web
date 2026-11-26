@@ -1,38 +1,37 @@
 <!doctype html>
 <html lang="fr">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Préparer les images de la photothèque</title>
-<style>
-* { box-sizing: border-box; }
-body { margin: 0; font: 1rem/1.55 system-ui, sans-serif; color: #172b28; background: #edf4f0; }
-main { max-width: 48rem; margin: clamp(2rem, 10vh, 7rem) auto; padding: 0 1rem; }
-h1 { font-size: clamp(2rem, 6vw, 3.35rem); line-height: 1.08; letter-spacing: -.05em; margin: 0 0 1rem; }
-section { background: white; border: 1px solid #cadbd3; border-radius: 1.25rem; padding: clamp(1rem, 5vw, 2rem); margin-top: 2rem; }
-.actions { display: flex; flex-wrap: wrap; gap: .75rem; }
-button, a { display: inline-block; font: inherit; font-weight: 650; padding: .65rem 1rem; border-radius: .55rem; border: 1px solid #216151; background: white; color: #184e41; cursor: pointer; }
-button:disabled { opacity: .5; cursor: default; }
-a { background: #216151; color: white; text-decoration: none; }
-[hidden] { display: none; }
-:focus-visible { outline: 3px solid #226dd1; outline-offset: 3px; }
-progress { width: 100%; accent-color: #216151; }
-li { overflow-wrap: anywhere; }
-</style>
-<main>
-  <h1>Préparer les images de la photothèque</h1>
-  <p>Récupérez les originaux, les JPEG web de 800 px de haut et les vignettes de 160 px dans un ZIP. Les images sont traitées sur cet appareil.</p>
-  <section aria-label="Conversion des images">
-    <div class="actions">
-      <button id="choose-files">Choisir des images</button>
-      <button id="choose-folder">Choisir un dossier</button>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Convertisseur d’images | byNativ</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Newsreader:opsz,wght@6..72,400;6..72,500&amp;display=swap">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <a href="https://www.bynativ.com/"><img src="bynativ.svg" width="132" height="51" alt="byNativ — accueil"></a>
     </div>
-    <input id="files" type="file" multiple hidden>
-    <input id="folder" type="file" webkitdirectory multiple hidden>
-    <p id="status" role="status">Sélectionnez des fichiers ou un dossier pour lancer la conversion.</p>
-    <progress id="progress" aria-label="Progression de la conversion" hidden></progress>
-    <ul id="errors" hidden></ul>
-    <a id="download" download="phototheque.zip" hidden>Télécharger le ZIP</a>
-  </section>
-</main>
-<script src="app.js?v=2"></script>
+  </header>
+  <main>
+    <h1>Convertisseur d’images</h1>
+    <p class="intro">Préparez vos photos pour la photothèque byNativ.</p>
+    <section aria-labelledby="conversion-title">
+      <h2 id="conversion-title">Choisir les images à convertir</h2>
+      <p>Le ZIP contient les originaux, les JPEG web de 800 px de haut et les vignettes de 160 px.</p>
+      <div class="actions">
+        <button class="primary" id="choose-files" type="button">Choisir des images</button>
+        <button id="choose-folder" type="button">Choisir un dossier</button>
+      </div>
+      <input id="files" type="file" multiple hidden>
+      <input id="folder" type="file" webkitdirectory multiple hidden>
+      <p id="status" role="status"></p>
+      <progress id="progress" aria-label="Progression de la conversion" hidden></progress>
+      <ul id="errors" hidden></ul>
+      <a class="button primary" id="download" download="phototheque.zip" hidden>Télécharger le ZIP</a>
+    </section>
+    <p class="privacy">Vos images restent sur cet appareil.</p>
+  </main>
+  <script src="app.js?v=2"></script>
+</body>
 </html>

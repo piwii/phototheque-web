@@ -1,0 +1,74 @@
+:root {
+  --ink: #09070f;
+  --forest: #142a19;
+  --sand: #efe7cc;
+  --amber: #f69f24;
+  --mist: #c8e5e1;
+  --muted: #4e4e4e;
+  font: 1rem/1.6 Inter, system-ui, sans-serif;
+  color: var(--ink);
+  background: var(--sand);
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; }
+header { background: white; }
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 5rem;
+  padding: .75rem 1rem;
+}
+.header-inner img { display: block; }
+main {
+  max-width: 54rem;
+  margin: auto;
+  padding: clamp(2.5rem, 9vw, 6rem) 1rem 3rem;
+}
+h1, h2 {
+  font-family: Newsreader, Georgia, serif;
+  font-weight: 500;
+  color: var(--forest);
+  line-height: 1.05;
+}
+h1 {
+  margin: 0;
+  font-size: clamp(2.55rem, 7.5vw, 5rem);
+  letter-spacing: -.04em;
+  text-align: center;
+}
+.intro { margin: .8rem 0 2rem; text-align: center; }
+section {
+  padding: clamp(1.3rem, 5vw, 2.75rem);
+  border-radius: 1.25rem;
+  background: white;
+}
+h2 { margin: 0; font-size: clamp(1.75rem, 4.5vw, 2.4rem); }
+section p { color: var(--muted); }
+.actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.5rem; }
+button, .button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 2.9rem;
+  padding: .55rem 1.2rem;
+  border: 1px solid var(--forest);
+  border-radius: 2rem;
+  background: white;
+  color: var(--forest);
+  font: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+button:hover:not(:disabled) { background: var(--mist); }
+.primary { background: var(--amber); border-color: var(--amber); color: var(--ink); }
+.primary:hover:not(:disabled) { background: #ffb64d; border-color: #ffb64d; }
+button:disabled { opacity: .55; cursor: default; }
+:focus-visible { outline: 2px solid var(--forest); outline-offset: 4px; }
+[hidden] { display: none; }
+#status:empty { margin: 0; }
+progress { display: block; width: 100%; accent-color: var(--forest); }
+li { overflow-wrap: anywhere; }
+.privacy { margin: 1.25rem 0 0; color: var(--forest); font-size: .875rem; text-align: center; }
