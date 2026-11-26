@@ -116,9 +116,20 @@ const crcTable = Uint32Array.from({ length: 256 }, (_, value) => {
   return value;
 });
 
+function readBytes(blob) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(new Uint8Array(reader.result));
+    reader.onerror = () => reject(reader.error);
+    reader.readAsArrayBuffer(blob);
+  });
+}
+
 async function checksum(blob) {
+  const chunkSize = 1024 * 1024;
   let crc = 0xffffffff;
-  for await (const chunk of blob.stream()) {
+  for (let offset = 0; offset < blob.size; offset += chunkSize) {
+    const chunk = await readBytes(blob.slice(offset, offset + chunkSize));
     for (const byte of chunk) crc = (crc >>> 8) ^ crcTable[(crc ^ byte) & 255];
   }
   return (crc ^ 0xffffffff) >>> 0;
